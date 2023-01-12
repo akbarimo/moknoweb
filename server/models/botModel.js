@@ -12,7 +12,6 @@ const getDataDB = async () => {
 
 const postDataDB = async (data) => {
   data.stats.uptime = Date.now();
-  console.log(data.stats.uptime);
   try {
     await findAndUpdateData(data);
     return Promise.resolve();

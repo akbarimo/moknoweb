@@ -8,15 +8,10 @@ const initialState = {
 const bot = createSlice({
   name: 'bot',
   initialState,
-  reducers: {
-    updateBotData: (state, action) => {
-      state.data = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getBotData.fulfilled, (state, action) => {
-        console.log(action.payload);
         const [data] = action.payload;
         state.data = data;
       })

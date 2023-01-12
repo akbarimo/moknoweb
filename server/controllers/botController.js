@@ -23,7 +23,6 @@ const postData = async (req, res) => {
 };
 
 const updateQueries = async (req, res) => {
-  console.log(req.body);
   try {
     await updateQueriesDB(req.body);
     res.sendStatus(201);

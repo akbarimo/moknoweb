@@ -14,6 +14,8 @@ const BotStats = () => {
     dispatch(getBotData());
   }, []);
 
+  // setInterval(() => dispatch(getBotData()), 10000);
+
   const time = DateTime.fromMillis(
     Date.now() - botData?.stats?.uptime - 57600000,
   ).toFormat("HH 'hours and' mm 'minutes' ss 'seconds'");
@@ -33,7 +35,7 @@ const BotStats = () => {
             {botData?.queries?.slice(0, 20)?.map((query, idx) => {
               return (
                 <li key={Math.random()}>
-                  {`User: ${query.user}   Query: ${query.string}`}
+                  {`User: '${query.user}'   Query: '${query.string}'`}
                 </li>
               );
             })}

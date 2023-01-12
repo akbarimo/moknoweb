@@ -65,37 +65,51 @@ const Home = () => {
 
   return (
     <>
-      <div className="home-imagine">
-        <h1 className="home-imagine-title">Imagine a Bot</h1>
-        <div className="home-imagine-body">
-          Satisfy the needs of you and your friends, associates, or followers
-          with the most easy-to-use Discord app!
+      <div className="home-imagine home">
+        <div className="home-imagine-content">
+          <h1 className="home-imagine-title">Imagine a Bot</h1>
+          <div className="home-imagine-body">
+            Satisfy the needs of you and your friends, associates, or followers
+            with the most easy-to-use Discord app!
+          </div>
+          <div>
+            <Stack direction="row" spacing={2} sx={{ margin: '1em' }}>
+              <Button
+                className="home-button"
+                variant="contained"
+                sx={{
+                  backgroundColor: 'rgb(63, 82, 99)',
+                  '&:hover': {
+                    backgroundColor: 'rgb(109, 130, 148)',
+                  },
+                }}
+                onClick={() =>
+                  openInNewTab(
+                    'https://discord.com/api/oauth2/authorize?client_id=1062171390612086834&permissions=8&scope=applications.commands%20bot',
+                  )
+                }
+              >
+                Add to Discord
+              </Button>
+              <Button
+                className="home-button"
+                variant="contained"
+                sx={{
+                  backgroundColor: 'rgb(63, 82, 99)',
+                  '&:hover': {
+                    backgroundColor: 'rgb(109, 130, 148)',
+                  },
+                }}
+                onClick={() =>
+                  featuresRef.current.scrollIntoView({ behavior: 'smooth' })
+                }
+              >
+                Features
+              </Button>
+            </Stack>
+          </div>
         </div>
-        <div>
-          <Stack direction="row" spacing={2}>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={() =>
-                openInNewTab(
-                  'https://discord.com/api/oauth2/authorize?client_id=1062171390612086834&permissions=8&scope=applications.commands%20bot',
-                )
-              }
-            >
-              Add to Discord
-            </Button>
-            <Button
-              variant="contained"
-              color="success"
-              onClick={() =>
-                featuresRef.current.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Features
-            </Button>
-          </Stack>
-        </div>
-        <div className="home-imagine-img">
+        <div className="home-imagine-img home-img">
           <img
             src="https://libertas.gg/build/assets/Home_Page_1.b0beabec.svg"
             alt=""
@@ -104,8 +118,8 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="home-engagement">
-        <div className="home-engagement-img">
+      <div className="home-engagement home">
+        <div className="home-engagement-img home-img">
           <img
             src="https://libertas.gg/images/illustrations/Home_Page_2.svg"
             alt=""
@@ -113,24 +127,26 @@ const Home = () => {
             width="500"
           />
         </div>
-        <h1 className="home-engagement-title" ref={featuresRef}>
-          Engagement
-        </h1>
-        <div className="home-engagement-body">
-          Liberate their Discord experience. Implement tools to engage your
-          community members
+        <div className="home-engagement-content">
+          <h1 className="home-engagement-title home-title" ref={featuresRef}>
+            Engagement
+          </h1>
+          <div className="home-engagement-body home-body">
+            Liberate their Discord experience. Implement tools to engage your
+            community members
+          </div>
+          {engagementTitles.map((eng, idx) => {
+            return (
+              <div key={Math.random(idx)}>
+                <h3>{eng}</h3>
+                <div className="feature-body">{engagementBodies[eng]}</div>
+              </div>
+            );
+          })}
         </div>
-        {engagementTitles.map((eng, idx) => {
-          return (
-            <div key={Math.random(idx)}>
-              <h3>{eng}</h3>
-              <div>{engagementBodies[eng]}</div>
-            </div>
-          );
-        })}
       </div>
-      <div className="home-utility">
-        <div className="home-utility-img">
+      <div className="home-utility home">
+        <div className="home-utility-img home-img">
           <img
             src="https://libertas.gg/images/illustrations/Home_Page_3.svg"
             alt=""
@@ -138,22 +154,24 @@ const Home = () => {
             width="500"
           />
         </div>
-        <h1 className="home-utility-title">Utility</h1>
-        <div className="home-utility-body">
-          Liberate your Discord experience in a healthy way by implementing
-          tools that make your server more manageable than ever.
+        <div className="home-utility-content">
+          <h1 className="home-utility-title home-title">Utility</h1>
+          <div className="home-utility-body home-body">
+            Liberate your Discord experience in a healthy way by implementing
+            tools that make your server more manageable than ever.
+          </div>
+          {utilityTitles.map((eng, idx) => {
+            return (
+              <div key={Math.random(idx)}>
+                <h3>{eng}</h3>
+                <div className="feature-body">{utilityBodies[eng]}</div>
+              </div>
+            );
+          })}
         </div>
-        {utilityTitles.map((eng, idx) => {
-          return (
-            <div key={Math.random(idx)}>
-              <h3>{eng}</h3>
-              <div>{utilityBodies[eng]}</div>
-            </div>
-          );
-        })}
       </div>
-      <div className="home-security">
-        <div className="home-security-img">
+      <div className="home-security home">
+        <div className="home-security-img home-img">
           <img
             src="https://libertas.gg/images/illustrations/Home_Page_4.svg"
             alt=""
@@ -161,19 +179,21 @@ const Home = () => {
             width="500"
           />
         </div>
-        <h1 className="home-security-title">Security</h1>
-        <div className="home-security-body">
-          Increase your community&apos;s safety by leveraging the many
-          moderation tools within your team.
+        <div className="home-security-content">
+          <h1 className="home-security-title home-title">Security</h1>
+          <div className="home-security-body home-body">
+            Increase your community&apos;s safety by leveraging the many
+            moderation tools within your team.
+          </div>
+          {securityTitles.map((eng, idx) => {
+            return (
+              <div key={Math.random(idx)}>
+                <h3>{eng}</h3>
+                <div className="feature-body">{securityBodies[eng]}</div>
+              </div>
+            );
+          })}
         </div>
-        {securityTitles.map((eng, idx) => {
-          return (
-            <div key={Math.random(idx)}>
-              <h3>{eng}</h3>
-              <div>{securityBodies[eng]}</div>
-            </div>
-          );
-        })}
       </div>
     </>
   );

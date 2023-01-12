@@ -35,7 +35,6 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   const updatePage = (e) => {
-    console.log(e.target);
     dispatch(updateCurrentPage(e.target.innerHTML));
   };
 
@@ -54,7 +53,10 @@ const SideBar = () => {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: 'rgb(63, 82, 99)',
+        }}
       >
         <Toolbar href="/">
           <Typography
@@ -110,7 +112,15 @@ const SideBar = () => {
           </List>
         </Box>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          backgroundColor: 'rgb(37, 33, 44)',
+          color: 'whitesmoke',
+        }}
+      >
         <Toolbar />
         {pages[currentPage]}
       </Box>
