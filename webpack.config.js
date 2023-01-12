@@ -38,7 +38,7 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        API_TOKEN: JSON.stringify(process.env.API_TOKEN),
+        HOST: JSON.stringify(process.env.HOST),
       },
     }),
     new CompressionPlugin({

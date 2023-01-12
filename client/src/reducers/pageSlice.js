@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isDarkMode: false,
+  currentPage: 'Bot Stats',
 };
 
 const page = createSlice({
@@ -11,10 +12,13 @@ const page = createSlice({
     updateIsDarkMode: (state, action) => {
       state.isDarkMode = !state.isDarkMode;
     },
+    updateCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { updateIsDarkMode } = page.actions;
+export const { updateIsDarkMode, updateCurrentPage } = page.actions;
 
 export default page.reducer;

@@ -1,8 +1,12 @@
 const botRouter = require('express').Router();
 const {
-  botController: { getGuildInfo },
+  botController: { getData, postData, updateQueries },
 } = require('../controllers');
 
-botRouter.get('/guild/info', getGuildInfo);
+botRouter.patch('/info/queries', updateQueries);
+
+botRouter.get('/info', getData);
+
+botRouter.post('/info', postData);
 
 module.exports = botRouter;

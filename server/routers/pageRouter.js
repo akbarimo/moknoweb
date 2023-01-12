@@ -9,5 +9,6 @@ const sendPage = (req, res) => {
 pageRouter.get('/commands', sendPage);
 pageRouter.get('/premium', sendPage);
 pageRouter.get('/about', sendPage);
+pageRouter.get('/dashboard', sendPage);
 
 module.exports = pageRouter;

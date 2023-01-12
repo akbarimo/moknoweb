@@ -1,19 +1,40 @@
 const {
-  botModel: { getGInfo },
+  botModel: { getDataDB, postDataDB, updateQueriesDB },
 } = require('../models');
 
-const getGuildInfo = async (req, res) => {
+const getData = async (req, res) => {
   try {
-    const gInfo = await getGInfo();
-    res.send(gInfo);
+    const data = await getDataDB();
+    res.send(data);
   } catch (err) {
     console.error(err);
     res.sendStatus(400);
   }
 };
 
-// getSearchHistory store name and query in db
+const postData = async (req, res) => {
+  try {
+    await postDataDB(req.body);
+    res.sendStatus(201);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(400);
+  }
+};
+
+const updateQueries = async (req, res) => {
+  console.log(req.body);
+  try {
+    await updateQueriesDB(req.body);
+    res.sendStatus(201);
+  } catch (err) {
+    console.error(err);
+    res.sendStatus(400);
+  }
+};
 
 module.exports = {
-  getGuildInfo,
+  getData,
+  postData,
+  updateQueries,
 };

@@ -1,6 +1,4 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Commands', 'Premium', 'About'];
+const pages = ['Dashboard', 'Commands', 'About'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const NavBar = () => {
@@ -119,7 +117,7 @@ const NavBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                href={`/${page}`}
+                href={`/${page.toLowerCase()}`}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -131,7 +129,10 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src="https://i.imgur.com/HNfcrla.png"
+                />
               </IconButton>
             </Tooltip>
             <Menu

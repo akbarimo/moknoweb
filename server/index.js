@@ -25,7 +25,7 @@ app.get('/*.js', (req, res, next) => {
   }
   next();
 });
-
+app.use(express.json());
 app.use(express.static(clientDirPath));
 app.use('/bot', botRouter);
 app.use(pageRouter);
