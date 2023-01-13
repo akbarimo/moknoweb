@@ -14,7 +14,7 @@ const BotStats = () => {
     dispatch(getBotData());
   }, []);
 
-  // setInterval(() => dispatch(getBotData()), 10000);
+  setInterval(() => dispatch(getBotData()), 5000);
 
   const time = DateTime.fromMillis(
     Date.now() - botData?.stats?.uptime - 57600000,

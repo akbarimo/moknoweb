@@ -249,3 +249,32 @@ h3 {
   justify-content: center;
   align-items: center;
 }
+
+/*  */
+
+.dash-settings {
+  grid-template-areas:
+    'dash-util-img'
+    'dash-util-body';
+}
+
+.dash-settings-img {
+  grid-area: dash-util-img;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash-settings-body {
+  grid-area: dash-util-body;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash-settings-features {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
