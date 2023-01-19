@@ -25,11 +25,10 @@ app.get('/*.js', (req, res, next) => {
   }
   next();
 });
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(clientDirPath));
 app.use('/bot', botRouter);
 app.use(pageRouter);
-
-app.use(morgan('dev'));
 
 app.listen(PORT, console.log(`Now listening on http://localhost:${PORT}`));

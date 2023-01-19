@@ -12,9 +12,8 @@ const BotStats = () => {
 
   useEffect(() => {
     dispatch(getBotData());
+    setInterval(() => dispatch(getBotData()), 5000);
   }, []);
-
-  setInterval(() => dispatch(getBotData()), 5000);
 
   const time = DateTime.fromMillis(
     Date.now() - botData?.stats?.uptime - 57600000,
@@ -32,7 +31,7 @@ const BotStats = () => {
           </div>
           <ul>
             Queries
-            {botData?.queries?.slice(0, 20)?.map((query, idx) => {
+            {botData?.queries?.slice(0, 50)?.map((query, idx) => {
               return (
                 <li key={Math.random()}>
                   {`User: '${query.user}'   Query: '${query.string}'`}

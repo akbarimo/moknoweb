@@ -1,4 +1,7 @@
 # Logs
+client/public/bundle.js
+client/public/bundle.js.gz
+
 logs
 *.log
 npm-debug.log*

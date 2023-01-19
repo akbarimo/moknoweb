@@ -4,7 +4,7 @@ import axios from 'axios';
 const getData = async (options) => {
   try {
     const result = await axios({
-      url: `${process.env.HOST}:3000/bot/info`,
+      url: `${process.env.HOST}:8080/bot/info`,
       method: 'GET',
     });
     return Promise.resolve(result.data);
