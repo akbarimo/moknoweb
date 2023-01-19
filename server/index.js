@@ -4,7 +4,12 @@ const cors = require('cors');
 const path = require('path');
 const morgan = require('morgan');
 const fs = require('fs');
-const { pageRouter, botRouter } = require('./routers');
+const MongoStore = require('connect-mongo');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const passport = require('passport');
+const { pageRouter, botRouter, authRouter } = require('./routers');
+require('./strategies/discord');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -25,9 +30,25 @@ app.get('/*.js', (req, res, next) => {
   }
   next();
 });
+
+app.use(cookieParser());
+app.use(
+  session({
+    secret: 'FJSDFHSDGSJWOXMCWQPWCWMCNEWCWOCQFJQF',
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: 'mongodb://localhost:27017/mokno',
+    }),
+  }),
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.static(clientDirPath));
+app.use('/auth', authRouter);
 app.use('/bot', botRouter);
 app.use(pageRouter);
 

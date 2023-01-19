@@ -4,7 +4,7 @@ const dataModel = require('./models/data');
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect('mongodb://localhost/mokno', {
+mongoose.connect('mongodb://localhost:27017/mokno', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

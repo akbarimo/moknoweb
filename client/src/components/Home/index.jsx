@@ -85,7 +85,7 @@ const Home = () => {
                 }}
                 onClick={() =>
                   openInNewTab(
-                    'https://discord.com/api/oauth2/authorize?client_id=1062171390612086834&permissions=8&scope=applications.commands%20bot',
+                    'https://discord.com/api/oauth2/authorize?client_id=1062171390612086834&permissions=8&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauth%2Fdiscord%2Fredirect&response_type=code&scope=identify%20applications.commands%20bot',
                   )
                 }
               >
