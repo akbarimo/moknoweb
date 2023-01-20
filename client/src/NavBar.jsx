@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,14 +13,19 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
-const pages = ['Dashboard', 'Commands'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { updateIsLoggedIn } from './reducers';
 
 const NavBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => state.user);
+
+  const pages = ['Dashboard', 'Commands'];
+  const settings = isLoggedIn
+    ? ['Profile', 'Account', 'Dashboard', 'Logout']
+    : ['Login'];
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -33,6 +39,18 @@ const NavBar = () => {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleLogin = () => {
+    console.log('Login');
+    const url = 'http://localhost:8080/auth/discord';
+    window.location = url;
+    dispatch(updateIsLoggedIn());
+  };
+
+  const handleLogout = () => {
+    console.log('Logout');
+    dispatch(updateIsLoggedIn());
   };
 
   return (
@@ -151,11 +169,31 @@ const NavBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map((setting) => {
+                if (setting === 'Login') {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={handleLogin}>
+                        {setting}
+                      </Typography>
+                    </MenuItem>
+                  );
+                }
+                if (setting === 'Logout') {
+                  return (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography textAlign="center" onClick={handleLogout}>
+                        {setting}
+                      </Typography>
+                    </MenuItem>
+                  );
+                }
+                return (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                );
+              })}
             </Menu>
           </Box>
         </Toolbar>

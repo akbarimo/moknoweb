@@ -22,4 +22,4 @@ const bot = createSlice({
   },
 });
 
-export default bot.reducer;
+export const botReducer = bot.reducer;

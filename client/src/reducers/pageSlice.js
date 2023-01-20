@@ -9,7 +9,7 @@ const page = createSlice({
   name: 'Page',
   initialState,
   reducers: {
-    updateIsDarkMode: (state, action) => {
+    updateIsDarkMode: (state) => {
       state.isDarkMode = !state.isDarkMode;
     },
     updateCurrentPage: (state, action) => {
@@ -21,4 +21,4 @@ const page = createSlice({
 
 export const { updateIsDarkMode, updateCurrentPage } = page.actions;
 
-export default page.reducer;
+export const pageReducer = page.reducer;

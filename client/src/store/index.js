@@ -1,12 +1,40 @@
 import { configureStore } from '@reduxjs/toolkit';
-import pageReducer from '../reducers/pageSlice';
-import botReducer from '../reducers/botSlice';
+import {
+  persistStore,
+  persistReducer,
+  PERSIST,
+  REHYDRATE,
+  REGISTER,
+  PURGE,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { botReducer, pageReducer, discordReducer } from '../reducers';
+
+const persistDiscordConfig = {
+  key: 'discord',
+  storage,
+};
+
+const persistedDiscordReducer = persistReducer(
+  persistDiscordConfig,
+  discordReducer,
+);
 
 const store = configureStore({
   reducer: {
     page: pageReducer,
     bot: botReducer,
+    user: persistedDiscordReducer,
+  },
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [REHYDRATE, PERSIST, REGISTER, PURGE],
+      },
+    });
   },
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export { persistor, store };
