@@ -31,10 +31,10 @@ function createData(command, commandId, usage, example) {
 
 const rows = [
   createData(
-    'Ask',
+    'Google',
     '2323232345',
-    '/ask (question)',
-    '/ask how far is the sun?',
+    '/google (question)',
+    '/google how far is the sun?',
   ),
   createData('Ping', '4345344311', '/ping', '/ping'),
   createData(

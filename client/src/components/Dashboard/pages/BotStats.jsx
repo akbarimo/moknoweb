@@ -31,7 +31,7 @@ const BotStats = () => {
           </div>
           <ul>
             Queries
-            {botData?.queries?.slice(0, 50)?.map((query, idx) => {
+            {botData?.queries?.slice(0, 200)?.map((query, idx) => {
               return (
                 <li key={Math.random()}>
                   {`User: '${query.user}'   Query: '${query.string}'`}
